@@ -1,0 +1,5 @@
+export const USERS_CLIENT = Symbol('USERS_CLIENT');
+export const CATALOG_CLIENT = Symbol('CATALOG_CLIENT');
+export const DISCOUNT_PROMOTION_CLIENT = Symbol('DISCOUNT_PROMOTION_CLIENT');
+export const ORDER_CLIENT = Symbol('ORDER_CLIENT');
+export const NOTIFICATION_CLIENT = Symbol('NOTIFICATION_CLIENT');

@@ -1,0 +1,16 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
+import { CatalogModule } from '@app/catalog/catalog.module';
+
+describe('CatalogController (e2e)', () => {
+	let app: INestApplication;
+
+	beforeEach(async () => {
+		const moduleFixture: TestingModule = await Test.createTestingModule({
+			imports: [CatalogModule],
+		}).compile();
+
+		app = moduleFixture.createNestApplication();
+		await app.init();
+	});
+});

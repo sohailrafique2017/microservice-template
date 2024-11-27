@@ -1,0 +1,40 @@
+
+
+services:
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app  # This ensures your local directory is mounted to /app in the container
+    ports:
+      - '5100:3000'  
+      - '5101:3001'  
+      - '5102:3002'  
+      - '5103:3003'  
+      - '5104:3004'  
+      - '5105:3005'  
+    depends_on:
+      - db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]  
+      interval: 30s  # Check every 30 seconds
+      timeout: 10s   # Timeout for the check
+      retries: 5     # Retry up to 5 times before considering the service unhealthy
+
+
+    
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
